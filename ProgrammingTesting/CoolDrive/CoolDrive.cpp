@@ -26,14 +26,17 @@ void CoolDrive::setSpeedRight(float speed) {
 	rearRightMotor->Set(-speed);
 }
 
+void CoolDrive::setSpeed(float leftSpeed, float rightSpeed) {
+	setSpeedLeft(leftSpeed);
+	setSpeedRight(rightSpeed);
+}
+
 void CoolDrive::tankDrive(Joystick *leftStick, Joystick *rightStick) {
-	setSpeedLeft(leftStick->GetAxis(leftStick->kYAxis));
-	setSpeedRight(rightStick->GetAxis(rightStick->kYAxis));
+	setSpeed(leftStick->GetAxis(leftStick->kYAxis), rightStick->GetAxis(rightStick->kYAxis));
 }
 
 void CoolDrive::arcadeDrive(Joystick *stick) {
 	float y = stick->GetAxis(stick->kYAxis)/2;
 	float x = stick->GetAxis(stick->kXAxis)/2;
-	setSpeedLeft(y - x);
-	setSpeedRight(y + x);
+	setSpeed(y - x, y + x);
 }

@@ -14,6 +14,7 @@ public:
 	~CoolDrive();
 	void setSpeedLeft(float speed);
 	void setSpeedRight(float speed);
+	void setSpeed(float speedLeft, float speedRight);
 	void tankDrive(Joystick *leftStick, Joystick *rightStick);
 	void arcadeDrive(Joystick *stick);
 };
